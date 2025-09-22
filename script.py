@@ -3,7 +3,7 @@ import subprocess
 import json
 from collections import OrderedDict
 
-################################################################################## Battery Status
+################################################################################## Battery
 def get_battery_percentage():
     output = subprocess.Popen(
         ['cat /sys/class/power_supply/battery/capacity'],
@@ -32,14 +32,14 @@ def get_battery_voltage():
         shell=True, stdout=subprocess.PIPE
     ).communicate()[0]
     return output.decode('utf-8').strip()
-################################################################################## Light Sensor Status
+################################################################################## Light Sensor
 def get_lux_level():
     output = subprocess.Popen(
         ['cat /sys/bus/i2c/devices/2-001c/show_lux'],
         shell=True, stdout=subprocess.PIPE
     ).communicate()[0]
     return output.decode('utf-8').strip()
-################################################################################## Board Temperature
+################################################################################## Temperature Sensor
 def get_board_temperature():
     output = subprocess.Popen(
         ['cat /sys/bus/i2c/devices/4-004c/ext_temperature'],
