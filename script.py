@@ -87,7 +87,7 @@ class ServerHandler(BaseHTTPRequestHandler):
             self.send_header('Content-type', 'application/json')
             self.end_headers()
             data = OrderedDict([
-                ('Board temperature', get_board_temperature())
+                ('Board', get_board_temperature())
             ])
             self.wfile.write(json.dumps(data).encode('utf-8'))
         elif self.path == '/status/screen':
@@ -95,10 +95,13 @@ class ServerHandler(BaseHTTPRequestHandler):
             self.send_header('Content-type', 'application/json')
             self.end_headers()
             data = OrderedDict([
-                ('Screen brightness', get_screen_brightness())
+                ('Brightness', get_screen_brightness())
             ])
             self.wfile.write(json.dumps(data).encode('utf-8'))
-        elif self.path == '/action/screen/toggle':
+        else:
+            self.send_error(404)
+    def do_POST(self):
+        if self.path == '/action/screen/toggle':
             toggle_screen()
             self.send_response(200)
             self.send_header('Content-type', 'application/json')

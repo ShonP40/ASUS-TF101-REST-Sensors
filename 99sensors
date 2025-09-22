@@ -1,0 +1,2 @@
+#!/system/bin/sh
+/system/bin/python3 /data/local/bin/ASUS-TF101-REST-Sensors-master/script.py &
