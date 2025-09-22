@@ -54,12 +54,6 @@ def get_screen_brightness():
         shell=True, stdout=subprocess.PIPE
     ).communicate()[0]
     return output.decode('utf-8').strip()
-
-def toggle_screen():
-    subprocess.Popen(
-        ['input keyevent 26'],
-        shell=True, stdout=subprocess.PIPE
-    ).communicate()
 ##################################################################################
 
 class ServerHandler(BaseHTTPRequestHandler):
@@ -97,18 +91,6 @@ class ServerHandler(BaseHTTPRequestHandler):
             self.end_headers()
             data = OrderedDict([
                 ('Brightness', get_screen_brightness())
-            ])
-            self.wfile.write(json.dumps(data).encode('utf-8'))
-        else:
-            self.send_error(404)
-    def do_POST(self):
-        if self.path == '/action/screen/toggle':
-            toggle_screen()
-            self.send_response(200)
-            self.send_header('Content-type', 'application/json')
-            self.end_headers()
-            data = OrderedDict([
-                ('Action', 'Toggled screen state')
             ])
             self.wfile.write(json.dumps(data).encode('utf-8'))
         else:
