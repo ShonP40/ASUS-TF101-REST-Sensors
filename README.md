@@ -35,7 +35,7 @@ A REST API for reporting the sensor values as well as controlling the backlight 
 Rebooting your device should automatically start the script
 
 ## Usage
-If you are using this script to display the battery status of your iOS device on Home Assistant, you can use the following configuration as an example:
+If you are using this script to display the battery status of your ASUS TF101 on Home Assistant, you can use the following configuration as an example:
 
 ```yaml
 sensor:
