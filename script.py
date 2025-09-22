@@ -1,3 +1,4 @@
+#!/system/bin/python3
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import subprocess
 import json
