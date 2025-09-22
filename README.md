@@ -59,6 +59,8 @@ sensor:
             - Battery status
             - Battery temperature
             - Battery voltage
+        timeout: 60
+
     - platform: rest
         name: Tablet light sensor
         unique_id: tablet_light_sensor
@@ -67,6 +69,8 @@ sensor:
         value_template: "{{ value_json.Lux }}"
         unit_of_measurement: "lx"
         device_class: illuminance
+        timeout: 60
+
     - platform: rest
         name: Tablet board temperature
         unique_id: tablet_board_temperature
@@ -75,6 +79,8 @@ sensor:
         value_template: "{{ value_json.Board }}"
         unit_of_measurement: "°C"
         device_class: temperature
+        timeout: 60
+
     - platform: rest
         name: Tablet screen brightness
         unique_id: tablet_screen_brightness
@@ -82,4 +88,5 @@ sensor:
         method: GET
         value_template: "{{ (value_json.Brightness | int / 255 * 100) | round(0) }}"
         unit_of_measurement: "%"
+        timeout: 60
 ```
